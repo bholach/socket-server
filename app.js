@@ -4,7 +4,7 @@ const path = require('path')
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 app.use('/app', express.static(path.join(__dirname, 'public')))
 
@@ -13,8 +13,8 @@ io.on('connection', function (socket) {
     socket.on('disconnect', function () {
         console.log('user disconnected');
     });
-    socket.on('msg', function (msg) {
-        socket.broadcast.emit('msg',msg);
+    socket.on('product_request', function (msg) {
+        socket.broadcast.emit('arrived',msg);
     });
 });
 
