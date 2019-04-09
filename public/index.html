@@ -11,16 +11,23 @@
 
 <body>
     <button id="start-btn" class="btn">start</button>
+	<br>
+	<h2 id='text' class="text-div error">Not Connected to server</h2>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/socket.io.slim.js"></script>
 
     <script>
         var socket = io();
+		socket.on('connect',(socket)=>{
+			document.getElementById('text').setAttribute('class','text-div success');
+			document.getElementById('text').innerHTML = 'Connected to server';
+		});
         $('#start-btn').click(function () {
-            socket.emit('msg', {
-                data: "start"
+            socket.emit('start-red', {
+                msg: "start"
             });
-           // alert('started');
+			document.getElementById('text').setAttribute('class','text-div active');
+			document.getElementById('text').innerHTML = 'Timer started';
         });
     </script>
 </body>
