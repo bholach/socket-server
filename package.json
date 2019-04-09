@@ -4,15 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build":"node app.js",
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "bhola kumar",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.2.0"
-  }
+  },
+   "bugs": {
+    "url": "https://github.com/bholach/issues"
+  },
+  "homepage": "https://github.com/bholach/"
 }
