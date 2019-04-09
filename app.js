@@ -1,23 +1,24 @@
+'use strict';
+
 const express = require('express');
-const app = express()
-const path = require('path')
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const socketIO = require('socket.io');
+const path = require('path');
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use('/app', express.static(path.join(__dirname, 'public')))
+const server = express()
+  .use('/app', express.static(path.join(__dirname, 'public')))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
 
 io.on('connection', function (socket) {
-    console.log('user connected');
+    console.log('a user connected');
     socket.on('disconnect', function () {
         console.log('user disconnected');
     });
-    socket.on('product_request', function (msg) {
-        socket.broadcast.emit('arrived',msg);
+    socket.on('product_request', function (data) {
+        socket.broadcast.emit('arrived',data);
     });
 });
 
-server.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
