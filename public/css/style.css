@@ -17,3 +17,23 @@ body {
 .btn:hover {
     box-shadow: 0px 6px 10px 1px rgba(0, 0, 0, 0.3);
 }
+.text-div{
+    transition:3s ease-in infinite;
+    border: 1px solid #ffffff;
+    width: auto;
+    display: inline-block;
+    padding: 19px;
+    background: #fff;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: #00ffbb;
+}
+.active{
+box-shadow: 0 10px 20px 1px rgba(0,0,0,0.4);
+}
+.error{
+ color:red !important;
+}
+.success{
+color:green !important;
+}
